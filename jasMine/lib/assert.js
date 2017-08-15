@@ -1,7 +1,13 @@
 (function(exports) {
   function report(test, passed) {
-    if (passed) console.log(test + ": Passed");
-    else throw new Error(test + ": Failed");
+    try {
+      if (passed) console.log("%c" + test + ": Passed", "color:Green");
+      else throw new Error(test);
+    }
+    catch (error) {
+      console.log("%c" + test + ": Failed", "color:Red");
+      console.log(error);
+    }
   }
 
   function isTrue(assertionToCheck) {
@@ -9,7 +15,9 @@
   }
 
   function isEqual(leftHandSide, rightHandSide) {
-    report(arguments.callee.caller.name, leftHandSide === rightHandSide);
+    var passed = leftHandSide === rightHandSide;
+    if (!passed) console.log("%c" + leftHandSide + " is not equal to " + rightHandSide, "color:Red");
+    report(arguments.callee.caller.name, passed);
   }
 
   exports.assert = {
