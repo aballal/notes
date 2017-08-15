@@ -3,7 +3,6 @@
 (function(exports) {
   function NoteList() {
     this._notes = [];
-
   };
 
   NoteList.prototype.addNote = function(note) {
