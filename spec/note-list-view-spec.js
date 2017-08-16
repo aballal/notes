@@ -6,7 +6,7 @@
 
     var noteListView = new NoteListView(noteList);
     var actualHTMLView = noteListView.convertToHTMLView();
-    var expectedHTMLView = "<ul><li><div>JavaScript</div></li><li><div>Ruby</div></li></ul>";
+    var expectedHTMLView = "<ul><li><div id='note-7'>JavaScript</div></li><li><div id='note-8'>Ruby</div></li></ul>";
 
     assert.isEqual(actualHTMLView, expectedHTMLView);
   };
@@ -20,7 +20,7 @@
 
     var noteListView = new NoteListView(noteList);
     var actualHTMLView  = noteListView.convertToHTMLView();
-    var expectedHTMLView = "<ul><li><div>JavaScript</div></li></ul>";
+    var expectedHTMLView = "<ul><li><div id='note-9'>JavaScript</div></li></ul>";
 
     assert.isEqual(actualHTMLView, expectedHTMLView);
   };
@@ -48,9 +48,24 @@
 
     var noteListView = new NoteListView(noteList);
     var actualHTMLView = noteListView.convertToHTMLView();
-    var expectedHTMLView = "<ul><li><div>JavaScript is a tric</div></li><li><div>Ruby is neat and tid</div></li></ul>";
+    var expectedHTMLView = "<ul><li><div id='note-10'>JavaScript is a tric</div></li><li><div id='note-11'>Ruby is neat and tid</div></li></ul>";
 
     assert.isEqual(actualHTMLView, expectedHTMLView);
   };
   testNoteListViewShowsSummary();
+})(this);
+
+(function(exports) {
+  function testNoteListViewCreatesURL() {
+    var noteList = new NoteList;
+    noteList.createNote("JavaScript is a tricky language");
+    noteList.createNote("Ruby is neat and tidy language");
+
+    var noteListView = new NoteListView(noteList);
+    var actualURLs = noteListView.createURLForEachNote();
+    var expectedURLs = "<a href=\"#notes/12\">JavaScript is a tric</a><a href=\"#notes/13\">Ruby is neat and tid</a>";
+
+    assert.isEqual(actualURLs, expectedURLs);
+  };
+  testNoteListViewCreatesURL();
 })(this);

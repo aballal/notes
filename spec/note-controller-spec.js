@@ -12,7 +12,7 @@
     var noteController = new NoteController(noteList);
     noteController.insertHTMLIntoApp();
     var actualInnerHTML = document.getElementById('app').innerHTML;
-    var expectedInnerHTML = "<ul><li><div>Favourite drink: sel</div></li></ul>";
+    var expectedInnerHTML = "<ul><li><div id=\"note-15\">Favourite drink: sel</div></li></ul>";
     assert.isEqual(actualInnerHTML, expectedInnerHTML);
   };
 
