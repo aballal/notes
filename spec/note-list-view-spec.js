@@ -39,3 +39,18 @@
   };
   testNoteListViewNoNote();
 })(this);
+
+(function(exports) {
+  function testNoteListViewShowsSummary() {
+    var noteList = new NoteList;
+    noteList.createNote("JavaScript is a tricky language");
+    noteList.createNote("Ruby is neat and tidy language");
+
+    var noteListView = new NoteListView(noteList);
+    var actualHTMLView = noteListView.convertToHTMLView();
+    var expectedHTMLView = "<ul><li><div>JavaScript is a tric</div></li><li><div>Ruby is neat and tid</div></li></ul>";
+
+    assert.isEqual(actualHTMLView, expectedHTMLView);
+  };
+  testNoteListViewShowsSummary();
+})(this);
