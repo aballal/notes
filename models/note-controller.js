@@ -45,6 +45,7 @@
   NoteController.prototype.postTextContent = function(clickEvent) {
     console.log("Text Submit was clicked!")
     console.log(clickEvent);
+    console.log(document.getElementById("text").value);
   };
 
   exports.NoteController = NoteController;
