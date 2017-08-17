@@ -2,6 +2,16 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <title>Notes</title>
+  </head>
+  <body>
+    <div id='app'>
+      Hello
+    </div>
+
+    <!-- All scripts below this line -->
+
+    <!-- testing framework -->
     <script type="text/javascript" src="./jasMine/lib/assert.js"></script>
 
     <!-- models -->
@@ -9,31 +19,16 @@
     <script type="text/javascript" src="./models/single-note-view.js"></script>
     <script type="text/javascript" src="./models/note-list.js"></script>
     <script type="text/javascript" src="./models/note-list-view.js"></script>
+    <script type="text/javascript" src="./models/note-controller.js"></script>
 
     <!-- specs -->
     <script type="text/javascript" src="./spec/note-spec.js"></script>
     <script type="text/javascript" src="./spec/single-note-view-spec.js"></script>
     <script type="text/javascript" src="./spec/note-list-spec.js"></script>
     <script type="text/javascript" src="./spec/note-list-view-spec.js"></script>
-
-    <title>Note</title>
-  </head>
-  <body>
-    <div id='app'>
-      Hello
-    </div>
-    <script type="text/javascript" src="./models/note-controller.js"></script>
     <script type="text/javascript" src="./spec/note-controller-spec.js"></script>
-    <script type="text/javascript">
-      var noteList = new NoteList();
 
-      noteList.createNote("Albert Einstein - We cannot solve our problems with the same thinking we used to create them.");
-      noteList.createNote("Richard Feynman - If you can't explain it simply, you don't understand it well enough.");
-      noteList.createNote("Batman - It's not who I am underneath but what I do that defines me.");
-
-      var noteController = new NoteController(noteList)
-      noteController.insertURLIntoApp();
-      noteController.makeUrlChangeShowNoteForCurrentPage();
-    </script>
+    <!-- page content -->
+    <script type="text/javascript" src="./controllers/note-controller.js"></script>
   </body>
 </html>
