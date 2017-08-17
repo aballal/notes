@@ -33,27 +33,7 @@
 
       var noteController = new NoteController(noteList)
       noteController.insertURLIntoApp();
-
-      makeUrlChangeShowNoteForCurrentPage();
-
-      function makeUrlChangeShowNoteForCurrentPage() {
-        window.addEventListener("hashchange", showNoteForCurrentPage);
-      };
-
-      function showNoteForCurrentPage() {
-        showNote(getNoteFromUrl(window.location));
-      };
-
-      function getNoteFromUrl(location) {
-        var id = Number(location.hash.split("/")[1]);
-        return noteList.getNotes()[id].getText();
-      };
-
-      function showNote(note) {
-        document
-          .getElementById("app")
-          .innerHTML = note;
-      };
+      noteController.makeUrlChangeShowNoteForCurrentPage();
     </script>
   </body>
 </html>
