@@ -11,7 +11,7 @@
   };
 
   NoteController.prototype.insertURLIntoApp = function() {
-    document.getElementById('app').innerHTML = this._noteListView.createURLForEachNote();
+    document.getElementById('app').innerHTML = this._noteListView.createULOfNotes('url');
   };
 
   exports.NoteController = NoteController;

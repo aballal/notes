@@ -15,6 +15,7 @@
     beforeEach();
     noteList.createNote("JavaScript");
     assert.isEqual(noteList.getNotes()[0].getText(), "JavaScript");
+    Note.resetLastUsedId();
   };
 
   testNoteListCanBeCreated();

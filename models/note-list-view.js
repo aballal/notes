@@ -3,25 +3,24 @@
     this._noteList = noteList;
   };
 
-  NoteListView.prototype.createULOfNotes = function() {
-    var htmlView = "<ul>"
+  NoteListView.prototype.createULOfNotes = function(format) {
+    format  = format || 'plain';
     var notes = this._noteList.getNotes();
-    //Change this to map later
+
+    var ulView = "<ul>"
     for (var i = 0; i < notes.length; i++) {
-      htmlView += "<li><div id='note-" + notes[i].getID() + "'>" + notes[i].getText().substr(0,20) + "</div></li>";
+      var id = notes[i].getID();
+      var text = notes[i].getText().substr(0,20);
+      if (format == 'url') text = this._createURLOfNote(id, text);
+      ulView += "<li><div id='note-" + id + "'>" + text + "</div></li>";
     }
-    htmlView += "</ul>"
-    return htmlView;
+    ulView += "</ul>"
+
+    return ulView;
   };
 
-  NoteListView.prototype.createURLForEachNote = function () {
-    var urls = "";
-    var notes = this._noteList.getNotes();
-    //Change this to map later
-    for (var i = 0; i < notes.length; i++) {
-      urls += "<a href=\"#notes/" + notes[i].getID() + "\">" + notes[i].getText().substr(0,20) + "</a>";
-    }
-    return urls;
+  NoteListView.prototype._createURLOfNote = function (id, text) {
+    return "<a href=\"#notes/" + id + "\">" + text + "</a>";
   };
 
   exports.NoteListView = NoteListView;
