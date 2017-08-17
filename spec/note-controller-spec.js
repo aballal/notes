@@ -1,19 +1,20 @@
 (function() {
   function testNoteControllerIsCreated() {
+    Note.resetLastUsedId();
     var noteList = new NoteList;
-    noteList.createNote("Favourite drink: seltze");
     var noteController = new NoteController(noteList);
+    noteList.createNote("Favourite drink: seltze");
     assert.isTrue(noteController);
   };
 
   function testNoteControllerInsertsHTMLIntoApp(){
+    Note.resetLastUsedId();
     var noteList = new NoteList;
-    noteList.createNote("Favourite drink: seltze");
     var noteController = new NoteController(noteList);
+    noteList.createNote("Favourite drink: seltze");
     noteController.insertHTMLIntoApp();
-    var actualInnerHTML = document.getElementById('app').innerHTML;
-    var expectedInnerHTML = "<ul><li><div id=\"note-15\">Favourite drink: sel</div></li></ul>";
-    assert.isEqual(actualInnerHTML, expectedInnerHTML);
+    var expectedInnerHTML = "<ul><li><div id=\"note-0\">Favourite drink: sel</div></li></ul>";
+    assert.isEqual(document.getElementById('app').innerHTML, expectedInnerHTML);
   };
 
   testNoteControllerIsCreated();

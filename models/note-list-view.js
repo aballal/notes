@@ -3,7 +3,7 @@
     this._noteList = noteList;
   };
 
-  NoteListView.prototype.convertToHTMLView = function() {
+  NoteListView.prototype.createULOfNotes = function() {
     var htmlView = "<ul>"
     var notes = this._noteList.getNotes();
     //Change this to map later

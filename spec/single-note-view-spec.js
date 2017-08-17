@@ -1,17 +1,23 @@
 (function(exports){
+  var note, singleNoteView;
+
+  function beforeEach() {
+    Note.resetLastUsedId();
+    note = new Note("Favourite drink: seltzer");
+    singleNoteView = new SingleNoteView(note);
+  };
+
   function testSingleNoteViewCanBeCreated(){
-    var note = new Note("Favourite drink: seltzer");
-    var singleNoteView = new SingleNoteView(note);
+    beforeEach();
     assert.isTrue(singleNoteView);
   };
 
   function testSingleNoteViewCreatesHTML() {
-    var note = new Note("Favourite drink: seltzer");
-    var singleNoteView = new SingleNoteView(note);
+    beforeEach();
     expectedHTML = "<div>Favourite drink: seltzer</div>";
-    actualHTML = singleNoteView.createHTML();
-    assert.isEqual(actualHTML, expectedHTML);
+    assert.isEqual(singleNoteView.createHTML(), expectedHTML);
   };
+
   testSingleNoteViewCanBeCreated();
   testSingleNoteViewCreatesHTML()
 })(this);

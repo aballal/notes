@@ -7,8 +7,11 @@
   };
 
   NoteController.prototype.insertHTMLIntoApp = function() {
-    var htmlView = this._noteListView.convertToHTMLView();
-    document.getElementById('app').innerHTML = htmlView;
+    document.getElementById('app').innerHTML = this._noteListView.createULOfNotes();
+  };
+
+  NoteController.prototype.insertURLIntoApp = function() {
+    document.getElementById('app').innerHTML = this._noteListView.createURLForEachNote();
   };
 
   exports.NoteController = NoteController;

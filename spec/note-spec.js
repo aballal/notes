@@ -1,19 +1,25 @@
 (function(exports) {
+  var note;
+
+  function beforeEach() {
+    Note.resetLastUsedId();
+    note = new Note("JavaScript");
+  };
+
   function testNoteHasAText() {
-    var note = new Note("JavaScript");
+    beforeEach();
     assert.isEqual(note.getText(), "JavaScript");
   };
-  testNoteHasAText();
-})(this);
 
-(function(exports) {
   function testNoteHasAUniqueID() {
-    var note1 = new Note("JavaScript");
+    beforeEach();
     var note2 = new Note("Ruby");
     var note3 = new Note("C++");
-    assert.isEqual(note1.getID(),0);
+    assert.isEqual(note.getID(),0);
     assert.isEqual(note2.getID(),1);
     assert.isEqual(note3.getID(),2);
   };
+
+  testNoteHasAText();
   testNoteHasAUniqueID();
 })(this);

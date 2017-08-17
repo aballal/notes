@@ -1,18 +1,22 @@
 (function(exports) {
-  function testNoteListHasAListOfNotes() {
-    var note = new Note("JavaScript");
-    var noteList = new NoteList;
-    noteList.addNote(note);
-    assert.isEqual(noteList.getNotes()[0], note);
-  };
-  testNoteListHasAListOfNotes();
-})(this);
+  var note, noteList;
 
-(function(exports) {
+  function beforeEach() {
+    Note.resetLastUsedId();
+    noteList = new NoteList;
+  };
+
+  function testNoteListCanBeCreated() {
+    beforeEach();
+    assert.isTrue(noteList);
+  };
+
   function testNoteListCanCreateNotes() {
-    var noteList = new NoteList;
+    beforeEach();
     noteList.createNote("JavaScript");
     assert.isEqual(noteList.getNotes()[0].getText(), "JavaScript");
   };
+
+  testNoteListCanBeCreated();
   testNoteListCanCreateNotes();
 })(this);
