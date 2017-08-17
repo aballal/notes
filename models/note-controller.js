@@ -33,5 +33,19 @@
     window.addEventListener("hashchange", this.showNoteForCurrentPage);
   };
 
+  NoteController.prototype.makeTextSubmitPostTextContent = function () {
+    document
+      .getElementById("text-submit")
+      .addEventListener("click", function(clickEvent) {
+        clickEvent.preventDefault();
+        noteController.postTextContent(clickEvent);
+    });
+  };
+
+  NoteController.prototype.postTextContent = function(clickEvent) {
+    console.log("Text Submit was clicked!")
+    console.log(clickEvent);
+  };
+
   exports.NoteController = NoteController;
 })(this);

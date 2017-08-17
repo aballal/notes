@@ -11,6 +11,7 @@
     noteController = new NoteController(noteList)
     noteController.insertURLIntoApp();
     noteController.makeUrlChangeShowNoteForCurrentPage();
+    noteController.makeTextSubmitPostTextContent();
   };
 
   setup();
