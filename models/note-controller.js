@@ -15,9 +15,7 @@
   };
 
   NoteController.prototype.showNote = function(note) {
-    document
-      .getElementById("app")
-      .innerHTML = note;
+    document.getElementById("app").innerHTML = note;
   };
 
   NoteController.prototype.getNoteFromUrl = function(location) {
@@ -43,9 +41,13 @@
   };
 
   NoteController.prototype.postTextContent = function(clickEvent) {
-    console.log("Text Submit was clicked!")
-    console.log(clickEvent);
-    console.log(document.getElementById("text").value);
+    this._noteList.createNote(document.getElementById("text").value);
+    noteController.insertURLIntoApp();
+    noteController.clearTextContent();
+  };
+
+  NoteController.prototype.clearTextContent = function() {
+    document.getElementById("text").value = "";
   };
 
   exports.NoteController = NoteController;
