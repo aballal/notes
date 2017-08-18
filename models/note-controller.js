@@ -18,13 +18,13 @@
     document.getElementById("app").innerHTML = note;
   };
 
-  NoteController.prototype.getNoteFromUrl = function(location) {
-    var id = Number(location.hash.split("/")[1]);
+  NoteController.prototype.getNoteFromUrl = function(hash) {
+    var id = Number(hash.split("/")[1]);
     return this._noteList.getNotes()[id].getText();
   };
 
   NoteController.prototype.showNoteForCurrentPage = function() {
-    noteController.showNote(noteController.getNoteFromUrl(window.location));
+    noteController.showNote(noteController.getNoteFromUrl(window.location.hash));
   };
 
   NoteController.prototype.makeUrlChangeShowNoteForCurrentPage = function () {

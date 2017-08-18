@@ -7,10 +7,15 @@
     noteList.createNote("Favourite drink: seltze");
   };
 
+  function afterEach() {
+    document.getElementById('app').innerHTML=""
+    Note.resetLastUsedId();
+  }
+
   function testNoteControllerIsCreated() {
     beforeEach();
     assert.isTrue(noteController);
-    Note.resetLastUsedId();
+    afterEach();
   };
 
   function testNoteControllerInsertsHTMLIntoApp(){
@@ -18,7 +23,7 @@
     noteController.insertHTMLIntoApp();
     var expectedInnerHTML = "<ul><li><div id=\"note-0\">Favourite drink: sel</div></li></ul>";
     assert.isEqual(document.getElementById('app').innerHTML, expectedInnerHTML);
-    Note.resetLastUsedId();
+    afterEach();
   };
 
   function testNoteControllerInsertsURLIntoApp() {
@@ -26,7 +31,7 @@
     noteController.insertURLIntoApp('url');
     var expectedInnerHTML = "<ul><li><div id=\"note-0\"><a href=\"#notes/0\">Favourite drink: sel</a></div></li></ul>";
     assert.isEqual(document.getElementById('app').innerHTML, expectedInnerHTML);
-    Note.resetLastUsedId();
+    afterEach();
   };
 
   function testNoteControllerShowsNote() {
@@ -34,11 +39,18 @@
     noteController.showNote(noteList.getNotes()[0].getText());
     var expectedInnerHTML = "Favourite drink: seltze";
     assert.isEqual(document.getElementById('app').innerHTML, expectedInnerHTML);
-    Note.resetLastUsedId();
+    afterEach();
+  };
+
+  function testNoteControllerGetsNotefromUrl() {
+    beforeEach();
+    assert.isEqual(noteController.getNoteFromUrl("#notes/0"), "Favourite drink: seltze");
+    afterEach();
   };
 
   testNoteControllerIsCreated();
   testNoteControllerInsertsHTMLIntoApp();
   testNoteControllerInsertsURLIntoApp();
   testNoteControllerShowsNote();
+  testNoteControllerGetsNotefromUrl();
 })(this);
