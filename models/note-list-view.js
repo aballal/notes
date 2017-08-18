@@ -12,12 +12,12 @@
     return "<ul>" + self._noteList.getNotes().map( function (note) {
       var text = note.getText().substr(0,20);
       if (format === 'url') text = self._createURLOfNote(note.getID(), text);
-      return "<li><div id='note-" + note.getID() + "'>" + text + "</div></li>";
+      return "<li><div>" + text + "</div></li>";
     }).join("") + "</ul>"
   };
 
   NoteListView.prototype._createURLOfNote = function (id, text) {
-    return "<a href=\"#notes/" + id + "\">" + text + "</a>";
+    return "<a id='note-" + id + "' href=\"#notes/" + id + "\">" + text + "</a>";
   };
 
   exports.NoteListView = NoteListView;

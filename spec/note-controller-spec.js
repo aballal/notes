@@ -21,7 +21,7 @@
   function testNoteControllerInsertsHTMLIntoApp(){
     beforeEach();
     noteController.insertHTMLIntoApp();
-    var expectedInnerHTML = "<ul><li><div id=\"note-0\">Favourite drink: sel</div></li></ul>";
+    var expectedInnerHTML = "<ul><li><div>Favourite drink: sel</div></li></ul>";
     assert.isEqual(document.getElementById('app').innerHTML, expectedInnerHTML);
     afterEach();
   };
@@ -29,7 +29,7 @@
   function testNoteControllerInsertsURLIntoApp() {
     beforeEach();
     noteController.insertURLIntoApp('url');
-    var expectedInnerHTML = "<ul><li><div id=\"note-0\"><a href=\"#notes/0\">Favourite drink: sel</a></div></li></ul>";
+    var expectedInnerHTML = "<ul><li><div><a id=\"note-0\" href=\"#notes/0\">Favourite drink: sel</a></div></li></ul>";
     assert.isEqual(document.getElementById('app').innerHTML, expectedInnerHTML);
     afterEach();
   };
