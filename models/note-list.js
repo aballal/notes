@@ -3,7 +3,7 @@
 (function(exports) {
   function NoteList() {
     this._notes = [];
-  };
+  }
 
   NoteList.prototype.getNotes = function() {
     return this._notes;

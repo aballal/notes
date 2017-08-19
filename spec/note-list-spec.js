@@ -1,5 +1,5 @@
 (function(exports) {
-  var note, noteList;
+  var noteList;
 
   function beforeEach() {
     Note.resetLastUsedId();

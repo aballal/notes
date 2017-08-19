@@ -5,7 +5,7 @@
     this._text = text;
     this._ID = LAST_USED_ID;
     LAST_USED_ID++;
-  };
+  }
 
   Note.resetLastUsedId = function() {
     LAST_USED_ID = 0;
