@@ -2,7 +2,9 @@
   var note, singleNoteView;
 
   function beforeEach() {
-    note = new Note("Favourite drink: seltzer");
+    if (window.TEST_TYPE === 'unit')
+      note = { getText: function() {return "Favourite drink: seltzer"}};
+    else note = new Note("Favourite drink: seltzer");
     singleNoteView = new SingleNoteView(note);
   };
 
