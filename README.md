@@ -1,7 +1,7 @@
 Notes
 ---
 
-This project builds is a front end single page app built using pure Javascript. It uses the event handlers provided by DOM instead of jQuery.
+This project builds a front end single page app built using pure Javascript. It uses the event handlers provided by DOM instead of jQuery.
 
 Instruction
 ---
