@@ -2,13 +2,15 @@
   var noteList, noteController;
 
   function beforeEach() {
-    noteList = {
-      createNote: function() {},
-      getNotes: function() { return [{
-        getID: function() {return 0},
-        getText: function() {return "Favourite drink: seltze"}
-      }]}
-    };
+    if (window.TEST_TYPE === 'unit')
+      noteList = {
+        createNote: function() {},
+        getNotes: function() { return [{
+          getID: function() {return 0},
+          getText: function() {return "Favourite drink: seltze"}
+        }]}
+      };
+    else noteList = new NoteList();
     noteController = new NoteController(noteList);
     noteList.createNote("Favourite drink: seltze");
   };
