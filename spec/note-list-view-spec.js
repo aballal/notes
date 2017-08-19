@@ -2,7 +2,21 @@
   var noteList, noteListView;
 
   function beforeEach() {
-    noteList = new NoteList;
+    if (window.TEST_TYPE === 'unit')
+      noteList = {
+        createNote: function() {},
+        getNotes: function() { return [
+          {
+            getID: function() {return 0},
+            getText: function() {return "JavaScript is a tricky language"}
+          },
+          {
+            getID: function() {return 1},
+            getText: function() {return "Ruby is a tidy language"}
+          }
+        ]}
+      };
+    else noteList = new NoteList;
     noteListView = new NoteListView(noteList);
     noteList.createNote("JavaScript is a tricky language");
     noteList.createNote("Ruby is a tidy language");
